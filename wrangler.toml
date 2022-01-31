@@ -1,0 +1,31 @@
+name = "my-wrangler-app"
+type = "javascript"
+workers_dev = true
+compatibility_date = "2022-01-27"
+account_id = "enter your account id"
+
+# create kv store and put id below to access any kv store (replace the below config)
+# kv_namespaces = [
+#          { binding = "KV_FROM_RUST", id= "5ff0fd9d0e4d4a409243630e9e9ef03c" }
+# ]
+
+[vars]
+WORKERS_RS_VERSION = "0.0.8"
+
+[build]
+command = "cargo install -q worker-build && worker-build --release" # required
+
+[build.upload]
+dir = "build/worker"
+format = "modules"
+main = "./shim.mjs"
+
+[[build.upload.rules]]
+globs = ["**/*.wasm"]
+type = "CompiledWasm"
+
+# read more about configuring your Worker via wrangler.toml at:
+# https://developers.cloudflare.com/workers/cli-wrangler/configuration
+
+# [SECRETS] (this is just for refrence)
+# mongo_data_api_key
