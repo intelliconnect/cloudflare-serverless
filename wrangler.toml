@@ -2,7 +2,6 @@ name = "my-wrangler-app"
 type = "javascript"
 workers_dev = true
 compatibility_date = "2022-01-27"
-account_id = "enter your account id"
 
 # create kv store and put id below to access any kv store (replace the below config)
 # kv_namespaces = [
@@ -10,7 +9,7 @@ account_id = "enter your account id"
 # ]
 
 [vars]
-WORKERS_RS_VERSION = "0.0.8"
+WORKERS_RS_VERSION = "0.0.9"
 
 [build]
 command = "cargo install -q worker-build && worker-build --release" # required
